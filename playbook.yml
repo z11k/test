@@ -1,0 +1,53 @@
+---
+- hosts: localhost
+  tasks:
+   - set_fact:
+       execute_command: "sqlplus -s books_admin/brekeke@192.168.56.111:1521/xe @select.sql"
+
+   - name: remove csv file
+     file:
+       path: "/etc/ansible/volume/vystup.csv"
+       state: absent
+
+   - name: remove excel file
+     file:
+       path: "/etc/ansible/volume/vystup.xlsx"
+       state: absent
+
+   - name: Get Object_details 
+     shell: "echo exit | {{ execute_command }} >> /etc/ansible/volume/vystup.csv"
+     environment:
+          ORACLE_HOME: /usr/lib/oracle/12.2/client64/
+          PATH: /usr/lib/oracle/12.2/client64/bin
+          LD_LIBRARY_PATH: /usr/lib/oracle/12.2/client64/lib
+
+   - name: build docker image
+     docker_image:
+      path: /root/projects/ansible-jjurak
+      name: python-csv
+
+   - name: create docker container
+     docker_container:
+      name: python-csv
+      image: python-csv
+      state: started
+      volumes:
+        - /etc/ansible/volume:/appl/volume
+
+   - name: wait for file
+     wait_for:
+      path: /etc/ansible/volume/vystup.xlsx
+
+
+#   - mail:
+#      host: smtp.cetin
+#      port: 25
+#      sender: ansible@cetin.cz
+#      to: lukas.krejcarek@cetin.cz
+#      subject: Ansible-report
+#      body: 'System {{ ansible_hostname }} has been successfully provisioned.'
+#      attach: /etc/ansible/volume/vystup.xlsx
+
+
+
+

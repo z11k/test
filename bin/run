@@ -1,0 +1,28 @@
+#!/bin/sh
+#-------------------------------------------------------------------------------
+_usage () { printf 'Usage: %s\n' "$(basename "$0")";	exit 0; }
+#-------------------------------------------------------------------------------
+while getopts "x" FLAG; do
+	case "${FLAG}" in
+		x) set -x;;
+	esac
+done
+shift $(($OPTIND - 1))
+[ "$#" -eq 0 ] || _usage
+#docker run \
+#	--interactive \
+#	--entrypoint \
+#	/usr/bin/zsh \
+#	python-csv
+# --tty \
+# --rm \
+# jjurak
+# <imageID>
+#   --volume "$PWD":/appl \
+#   --workdir /appl \
+#   jjurak/:2018.06 "$@"
+
+#docker run --interactive --tty --rm  --entrypoint /bin/zsh jjurak
+#docker run --interactive --entrypoint /bin/zsh jjurak
+docker run -i -t --entrypoint /usr/bin/zsh python-csv
+# EOF
