@@ -1,0 +1,33 @@
+call plug#begin('$HOME/.vim/plugged')
+"Plug 'scrooloose/syntastic'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+"Plug 'rhysd/accelerated-jk'
+"Plug 'rhysd/try-colorscheme.vim'
+"Plug 'rhysd/vim-clang-format'
+"Plug 'rhysd/vim-grammarous'
+"Plug 'scrooloose/nerdtree'
+"Plug 'jistr/vim-nerdtree-tabs'
+"Plug 'davidhalter/jedi'
+"Plug 'Shougo/neocomplete'
+"Plug 'Shougo/neosnippet'
+"Plug 'Shougo/neosnippet-snippets'
+Plug 'saltstack/salt-vim'
+"Plug 'vim-ruby/vim-ruby'
+"Plug 'jlanzarotta/bufexplorer'
+"Plug 'rgarver/Kwbd.vim'
+"Plug 'sheerun/vim-polyglot'
+"Plug 'majutsushi/tagbar'
+"Plug 'tpope/vim-surround'
+"Plug 'svermeulen/vim-easyclip'
+"Plug 'falstro/ghost-text-vim'
+"Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
+"Plug 'KabbAmine/zeavim.vim', {'on': [
+"                       \       'Zeavim', 'Docset',
+"                       \       '<Plug>Zeavim',
+"                       \       '<Plug>ZVVisSelection',
+"                       \       '<Plug>ZVKeyDocset',
+"                       \       '<Plug>ZVMotion'
+"                       \ ]}
+call plug#end()

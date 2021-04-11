@@ -1,0 +1,4 @@
+*.md
+README-secret.md
+bin
+!README*.md
